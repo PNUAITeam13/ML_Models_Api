@@ -6,7 +6,7 @@ from config import Config
 
 
 mm = Marshmallow()
-cors = CORS()
+cors = CORS(supports_credentials=True, methods=["GET", "POST", "OPTIONS"])
 
 
 def create_app(config_class=Config.get_config()):

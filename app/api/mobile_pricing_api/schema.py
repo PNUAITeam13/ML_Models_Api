@@ -4,9 +4,9 @@ from app import mm
 
 class MobilePricingSchema(mm.Schema):
     battery_power = fields.Int()
-    blue = fields.Str()
+    blue = fields.Int()
     clock_speed = fields.Float()
-    dual_sim = fields.Str()
+    dual_sim = fields.Int()
     fc = fields.Int()
     int_memory = fields.Int()
     m_dep = fields.Float()
@@ -19,18 +19,18 @@ class MobilePricingSchema(mm.Schema):
     sc_h = fields.Int()
     sc_w = fields.Int()
     talk_time = fields.Int()
-    four_g = fields.Str()
-    three_g = fields.Str()
-    touch_screen = fields.Str()
-    wifi = fields.Str()
+    four_g = fields.Int()
+    three_g = fields.Int()
+    touch_screen = fields.Int()
+    wifi = fields.Int()
 
     @staticmethod
     def get_model_details():
         return [
             {"name": "battery_power", "displayName": "Battery Power", "type": "int"},
-            {"name": "blue", "displayName": "Bluetooth", "type": "str"},
+            {"name": "blue", "displayName": "Bluetooth", "type": "int"},
             {"name": "clock_speed", "displayName": "Clock Speed", "type": "float"},
-            {"name": "dual_sim", "displayName": "Dual SIM", "type": "str"},
+            {"name": "dual_sim", "displayName": "Dual SIM", "type": "int"},
             {"name": "fc", "displayName": "Front Camera", "type": "int"},
             {"name": "int_memory", "displayName": "Internal Memory", "type": "int"},
             {"name": "m_dep", "displayName": "Mobile Depth", "type": "float"},
@@ -43,8 +43,8 @@ class MobilePricingSchema(mm.Schema):
             {"name": "sc_h", "displayName": "Screen Height", "type": "int"},
             {"name": "sc_w", "displayName": "Screen Width", "type": "int"},
             {"name": "talk_time", "displayName": "Talk Time", "type": "int"},
-            {"name": "four_g", "displayName": "4G", "type": "str"},
-            {"name": "three_g", "displayName": "3G", "type": "str"},
-            {"name": "touch_screen", "displayName": "Touch Screen", "type": "str"},
-            {"name": "wifi", "displayName": "WiFi", "type": "str"},
+            {"name": "four_g", "displayName": "4G", "type": "int"},
+            {"name": "three_g", "displayName": "3G", "type": "int"},
+            {"name": "touch_screen", "displayName": "Touch Screen", "type": "int"},
+            {"name": "wifi", "displayName": "WiFi", "type": "int"},
         ]
