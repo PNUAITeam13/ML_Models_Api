@@ -1,6 +1,7 @@
 flask~=3.0.0
 marshmallow~=3.20.1
 flask_marshmallow
+flask-cors
 
 # For ML
 pandas~=2.1.1

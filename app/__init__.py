@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_marshmallow import Marshmallow
 
 from config import Config
 
 
 mm = Marshmallow()
+cors = CORS()
 
 
 def create_app(config_class=Config.get_config()):
@@ -13,6 +15,7 @@ def create_app(config_class=Config.get_config()):
     app.config.from_object(config_class)
 
     mm.init_app(app)
+    cors.init_app(app, resources={r"/api/*": {"origins": "*"}})
 
     with app.app_context():
         from .api import api_bp
