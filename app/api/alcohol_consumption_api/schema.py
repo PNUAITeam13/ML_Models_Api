@@ -2,6 +2,8 @@ from marshmallow import fields
 from app import mm
 
 
+
+
 class AlcoholConsumptionSchema(mm.Schema):
     age = fields.Int()
     studytime = fields.Int()
@@ -27,13 +29,20 @@ class AlcoholConsumptionSchema(mm.Schema):
                 {"name": "studytime", "displayName": "Weekly study time", "type": "int"},
                 {"name": "reason", "displayName": "Reason to choose this school", "type": "multi_select",
                  "options": ["home", "reputation", "course", "other"]},
-                {"name": "failures", "displayName": "Number of past class failures", "type": "bool"},
-                {"name": "famsup", "displayName": "Family educational support", "type": "bool"},
-                {"name": "paid", "displayName": "Extra paid classes within the course subject", "type": "bool"},
-                {"name": "activities", "displayName": "Extra-curricular activities", "type": "bool"},
-                {"name": "higher", "displayName": "Wants to take higher education", "type": "bool"},
-                {"name": "internet", "displayName": "Internet access at home", "type": "bool"},
+                {"name": "failures", "displayName": "Number of past class failures", "type": "int"},
+                {"name": "famsup", "displayName": "Family educational support",
+                 "type": "multi_select", "options": ["yes", "no"]},
+                {"name": "paid", "displayName": "Extra paid classes within the course subject",
+                 "type": "multi_select", "options": ["yes", "no"]},
+                {"name": "activities", "displayName": "Extra-curricular activities",
+                 "type": "multi_select", "options": ["yes", "no"]},
+                {"name": "higher", "displayName": "Wants to take higher education",
+                 "type": "multi_select", "options": ["yes", "no"]},
+                {"name": "internet", "displayName": "Internet access at home",
+                 "type": "multi_select", "options": ["yes", "no"]},
                 {"name": "famrel", "displayName": "Quality of family relationships", "type": "int"},
+                {"name": "romantic", "displayName": "With a romantic relationship",
+                 "type": "multi_select", "options": ["yes", "no"]},
                 {"name": "freetime", "displayName": "Free time after school", "type": "int"},
                 {"name": "goout", "displayName": "Going out with friends", "type": "int"},
                 {"name": "Dalc", "displayName": "Workday alcohol consumption", "type": "int"},

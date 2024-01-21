@@ -14,16 +14,16 @@ api_bp.register_blueprint(mobile_pricing_bp, url_prefix="/mobile_pricing")
 api_bp.register_blueprint(csgo_round_winner_bp, url_prefix="/csgo_round_winner")
 
 
-@api_bp.app_errorhandler(ValueError)
-def handle_marshmallow_error(e):
-    return "Expected object or value", 400
+# @api_bp.app_errorhandler(ValueError)
+# def handle_marshmallow_error(e):
+#     return "Expected object or value", 400
 
 
-@api_bp.app_errorhandler(KeyError)
-def handle_marshmallow_error(e):
-    return "The data you submitted does not contain the required fields", 400
+# @api_bp.app_errorhandler(KeyError)
+# def handle_marshmallow_error(e):
+#     return "The data you submitted does not contain the required fields", 400
 
 
-@api_bp.app_errorhandler(ValidationError)
-def handle_marshmallow_error(e):
-    return e.messages, 400
+# @api_bp.app_errorhandler(ValidationError)
+# def handle_marshmallow_error(e):
+#     return e.messages, 400
