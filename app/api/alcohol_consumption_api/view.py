@@ -1,6 +1,7 @@
 import pandas as pd
 
 from flask import request, make_response
+from flask_cors import cross_origin
 from marshmallow import ValidationError
 
 from .alcohol_consumption_data_processing import AlcoholConsumptionDataProcessing
@@ -12,11 +13,13 @@ ALLOWED_EXTENSIONS = {'csv', 'json'}
 
 
 @app.get('/fields')
+@cross_origin()
 def get_model_details():
     return AlcoholConsumptionSchema.get_model_details()
 
 
-@app.post('/')
+@app.route('/', methods=['POST'])
+@cross_origin()
 def upload_data():
     schema = AlcoholConsumptionSchema(many=True)
     data: pd.DataFrame = pd.DataFrame(schema.load(request.json))
@@ -25,6 +28,7 @@ def upload_data():
 
 
 @app.post('/upload_file')
+@cross_origin()
 def upload_file():
     if 'data' not in request.files:
         raise ValidationError('File was not provided')

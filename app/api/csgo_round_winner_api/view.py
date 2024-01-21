@@ -1,6 +1,7 @@
 import pandas as pd
 
 from flask import request, make_response
+from flask_cors import cross_origin
 from marshmallow import ValidationError
 
 from .schema import CSGORoundWinnerSchema
@@ -12,11 +13,13 @@ ALLOWED_EXTENSIONS = {'csv', 'json'}
 
 
 @app.get('/fields')
+@cross_origin()
 def get_model_details():
     return CSGORoundWinnerSchema.get_model_details()
 
 
 @app.post('/')
+@cross_origin()
 def upload_data():
     schema = CSGORoundWinnerSchema(many=True)
     data: pd.DataFrame = pd.DataFrame(schema.load(request.json))
@@ -24,6 +27,7 @@ def upload_data():
 
 
 @app.post('/upload_file')
+@cross_origin()
 def upload_file():
     if 'data' not in request.files:
         raise ValidationError('File was not provided')

@@ -6,7 +6,7 @@ from config import Config
 
 
 mm = Marshmallow()
-cors = CORS(supports_credentials=True, methods=["GET", "POST", "OPTIONS"])
+cors = CORS(resources={r"/*": {"origins": "http://localhost:3000"}})
 
 
 def create_app(config_class=Config.get_config()):
@@ -15,7 +15,7 @@ def create_app(config_class=Config.get_config()):
     app.config.from_object(config_class)
 
     mm.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": "*", "methods": "*"}})
+    cors.init_app(app)
 
     with app.app_context():
         from .api import api_bp
@@ -28,4 +28,3 @@ def create_app(config_class=Config.get_config()):
 config = Config.get_config()
 
 app = create_app(config)
-
