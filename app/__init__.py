@@ -6,7 +6,7 @@ from config import Config
 
 
 mm = Marshmallow()
-cors = CORS(resources={r"/*": {"origins": "http://localhost:3000"}})
+cors = CORS(resources={r"/*": {"origins": "*"}})
 
 
 def create_app(config_class=Config.get_config()):
