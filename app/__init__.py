@@ -15,7 +15,7 @@ def create_app(config_class=Config.get_config()):
     app.config.from_object(config_class)
 
     mm.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": "*"}})
+    cors.init_app(app, resources={r"/api/*": {"origins": "*", "methods": "*"}})
 
     with app.app_context():
         from .api import api_bp
