@@ -6,13 +6,11 @@ from sklearn.cluster import KMeans
 
 from .models.CSGO_Round_Winner_Clustering.data_transformer.DataTransformer import DataTransformer
 
-
 with open("app/api/csgo_round_winner_api/pkl/model.pkl", 'rb') as file:
     model = pickle.load(file)
 
 with open("app/api/csgo_round_winner_api/pkl/kmeans.pkl", 'rb') as file:
     kmeans: KMeans = pickle.load(file)
-
 
 features = ["ct_score", "t_score", "map", "bomb_planted", "ct_money", "t_money", "ct_health", "t_health", "ct_armor",
             "t_armor", "ct_helmets", "t_helmets", "ct_defuse_kits", "ct_players_alive", "t_players_alive",
@@ -36,6 +34,7 @@ class CSGORoundWinnerDataProcessing:
         return data
 
     @staticmethod
-    def predict(data: pd.DataFrame, is_data_transformed: bool = True) -> pd.DataFrame:
-        return pd.DataFrame(model.predict(data if is_data_transformed
-                                          else CSGORoundWinnerDataProcessing.transform_data(data)))
+    def predict(data: pd.DataFrame, is_data_transformed: bool = True) -> pd.Series:
+        return (pd.Series(model.predict(
+            data if is_data_transformed else CSGORoundWinnerDataProcessing.transform_data(data)))
+                .map({1: "CT", 0: "T"}))
