@@ -1,10 +1,11 @@
 import pickle
 
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LinearRegression
 
-with open("app/api/alcohol_consumption_api/pkl/model.pkl", 'rb') as file:
-    model: RandomForestClassifier = pickle.load(file)
+with open("app/api/alcohol_consumption_api/pkl/linreg.pkl", 'rb') as file:
+    # model: RandomForestClassifier = pickle.load(file)
+    model: LinearRegression = pickle.load(file)
 
 with open("app/api/alcohol_consumption_api/pkl/encoder.pkl", 'rb') as file:
     encoder = pickle.load(file)
