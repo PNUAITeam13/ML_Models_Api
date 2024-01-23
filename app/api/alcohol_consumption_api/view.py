@@ -28,7 +28,6 @@ def upload_data():
 
 
 @app.post('/upload_file')
-@cross_origin()
 def upload_file():
     if 'data' not in request.files:
         raise ValidationError('File was not provided')
